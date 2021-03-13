@@ -6,6 +6,9 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "needle": "^2.6.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.3",
@@ -15,7 +18,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "node-env-run server --exec nodemon | pino-colada",
+    "dev": "run-p server start"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +39,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-pino-logger": "^6.0.0",
+    "node-env-run": "^4.0.2",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "pino-colada": "^2.1.0",
+    "sass": "^1.32.8",
+    "sass-loader": "^11.0.1"
+  },
+  "proxy": "http://localhost:3001"
 }
