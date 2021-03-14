@@ -2,11 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const pino = require("express-pino-logger")();
 const path = require("path");
-
-require("dotenv").config();
+const app = express();
 const PORT = process.env.PORT || 5000;
 
-const app = express();
+// Enable access to .env
+require("dotenv").config();
 
 // Route Variables
 const searchTweets = require("../routes/api/searchTweets");
@@ -17,8 +17,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(pino);
 
 // Routes
-app.use("/api/searchTweets/:query", searchTweets);
+app.use("/api/searchTweets/", searchTweets);
 
+// Handle Production Environment
 if (process.env.NODE_ENV === "production") {
     // Serve Static Files
     app.use(express.static(path.join(__dirname, "src/build")));
@@ -29,4 +30,5 @@ if (process.env.NODE_ENV === "production") {
     });
 };
 
+// Start Server
 app.listen(PORT, () => console.info(`Express server is running on http://localhost:${PORT}`));
