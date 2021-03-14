@@ -1,10 +1,9 @@
 import axios from 'axios';
 
-const testFile = async () => {
+const testFile = async (search_parameters) => {
     try {
-        const request = await axios.get("/api/connectToSampleStream");
+        const request = await axios.get(`/api/searchTweets/?query=${search_parameters}`);
         const response = request.data;
-        console.info("TEST RESPONSE: ", response);
         return response;
     } catch (error) {
         console.error(error.message);
