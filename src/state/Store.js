@@ -3,7 +3,9 @@ import Reducer from "./Reducer";
 
 const initialState = {
     query: "",
-    tweets: []
+    tweets: [],
+    displayedTweets: [],
+    page: 0
 };
 
 const Store = ({ children }) => {

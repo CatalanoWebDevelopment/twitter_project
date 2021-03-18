@@ -8,12 +8,10 @@ const searchTweets = async (searchQuery) => {
     try {
         const params = {
             "query": `${searchQuery} lang:en`,
-            "max_results": 10,
+            "max_results": 100,
             "tweet.fields": "attachments,author_id,entities,source,text",
             "user.fields": "description,entities,location,name,profile_image_url,username,verified"
         };
-
-        console.log("PARAMS: ", params);
 
         const res = await needle("get", endpointURL, params, {
             headers: {

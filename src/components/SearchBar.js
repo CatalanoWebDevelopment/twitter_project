@@ -1,31 +1,29 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useContext } from "react";
 import axios from "axios";
+import { Context } from "../state/Store";
+import { UPDATE_TWEETS_FROM_SEARCH, ERROR } from "../state/Types";
+import { Col } from "reactstrap";
 
-const SearchBar = () => {
-    const [page, updatePage] = useState(0);
-    const [search_parameters, updateSearch] = useState("");
-    const [compiledData, setCompiledData] = useState(new Map()); 
-    
+const SearchBar = () => {    
+    // eslint-disable-next-line no-unused-vars
+    const [state, dispatch] = useContext(Context);
+
     const handleSearch = async (search_parameters) => {
         try {
             const request = await axios.get(`/api/searchTweets/?query=${search_parameters}`);
             const response = request.data;
-            return response;
+            dispatch({ type: UPDATE_TWEETS_FROM_SEARCH, payload: response });
         } catch (error) {
-            return error.message;
+            dispatch({ type: ERROR, payload: error.message });
         };
     };
 
-    useEffect(() => {
-        handleSearch(search_parameters).then(data => {
-            setCompiledData(compiledData.set(page, data));
-        });
-    }, [search_parameters, compiledData, page]);
-
     return (
-        <Fragment>
-            <input type="text" onKeyUp={(e) => updateSearch(e.target.value)} />
-        </Fragment>
+        // <Fragment>  
+            <Col xs={{ size: 12, order: 1 }} m={{ size: 8, order: 1 }}>
+                <input className="searchbar" type="text" onKeyUp={(e) => handleSearch(e.target.value)} />
+            </Col>
+        // </Fragment>
     );
 };
 
