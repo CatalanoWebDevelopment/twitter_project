@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       <input type="text" onKeyUp={(e) => updateSearch(e.target.value)} />
       <h1>API Response:</h1>
-      <p>{compiledData.get(page)}</p>
+      <p>{(compiledData.get(page)) ? console.log(compiledData.get(page)) : ""}</p>
       <button type="button" onClick={() => updatePage(page + 1)}>Page {page}</button>
     </div>
   );
