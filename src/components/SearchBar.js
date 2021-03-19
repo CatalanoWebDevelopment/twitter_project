@@ -20,7 +20,7 @@ const SearchBar = () => {
 
     return (
         <Col xs={{ size: 12, order: 1 }} m={{ size: 8, order: 1 }}>
-            <h1 className="feed_title">Tweet Feed</h1>
+            <h2 className="mt-3 mb-3">Tweet Feed</h2>
             <InputGroup>
                 <InputGroupAddon addonType="prepend">
                     <InputGroupText>
