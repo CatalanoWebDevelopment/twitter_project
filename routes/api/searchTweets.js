@@ -8,8 +8,9 @@ const searchTweets = async (searchQuery) => {
     try {
         const params = {
             "query": `${searchQuery} lang:en`,
-            "max_results": 100,
+            "max_results": 10,
             "tweet.fields": "attachments,author_id,entities,source,text",
+            "expansions": "author_id",
             "user.fields": "description,entities,location,name,profile_image_url,username,verified"
         };
 
@@ -20,7 +21,18 @@ const searchTweets = async (searchQuery) => {
         });
 
         if (res.body) {
-            return res.body;
+            if (res.body.includes && res.body.includes.users) {
+                // Create an associative array of our users based upon their ID to match a tweet to.
+                let authors = {};
+                for (let index = 0; index < res.body.includes.users.length; index++) {
+                    let user = res.body.includes.users[index];
+                    if (!authors[user.id]) authors[user.id] = user;
+                };
+
+                return { tweets: res.body.data, meta: res.body.meta, authors };
+            } else {
+                throw new Error("No relevant Tweets found, try another search.");
+            };
         } 
         else {
             throw new Error("Unsuccessful Request");

@@ -3,8 +3,10 @@ import Reducer from "./Reducer";
 
 const initialState = {
     query: "",
+    next: "",
     tweets: [],
     displayedTweets: [],
+    authors: [],
     page: 0
 };
 

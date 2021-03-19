@@ -12,10 +12,10 @@ const TweetContainer = () => {
         <Fragment>
             <Col xs={{ size: 12, order: 3 }} m={{ size: 8, order: 2 }}>
                 { state.displayedTweets.length < 1 ? <Spinner /> : state.displayedTweets.map((tweet, index) => (
-                    <TweetCard key={index} tweet={tweet} />
+                    <TweetCard key={index} tweet={tweet} authors={state.authors} />
                 ))}
 
-                <Button className="load_more_tweets" onClick={() => dispatch(LOAD_MORE_TWEETS)}>Load more</Button>
+                <Button className="load_more_tweets mt-3" onClick={() => dispatch(LOAD_MORE_TWEETS)}>Load more</Button>
             </Col>
         </Fragment>
     );
