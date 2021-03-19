@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Row, Col, Container } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
-function TweetCard(props) {
+const TweetCard = (props) => {
     const user = props.authors[props.tweet.author_id];
     const tweet = props.tweet;
 
