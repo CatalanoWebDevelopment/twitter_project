@@ -1,10 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Badge } from 'reactstrap';
 
-const TweetCard = (props) => {
-    const user = props.authors[props.tweet.author_id];
-    const tweet = props.tweet;
+const TweetCard = ({ tweet, authors }) => {
+    const user = authors[tweet.author_id];
+    let hashtags;
+
+    if (tweet.entities && tweet.entities.hashtags) {
+        hashtags = tweet.entities.hashtags;
+    };
 
     return (
         <Row className="p-3 m-0 tweet_row_container">
@@ -14,16 +18,20 @@ const TweetCard = (props) => {
 
             <Col xs="11">
                 <div className="handle--container">
-                    {user.username}
+                    @{user.username}
                 </div>
 
                 <div className="tweet_text--container">
                     {tweet.text}
                 </div>
 
-                <div className="hashtags--container">
-
-                </div>
+                {!hashtags ? "" : (hashtags.map((hashtag, index) => {
+                    return (
+                        <Badge key={index} className="hashtag" pill>
+                            #{hashtag.tag}
+                        </Badge>
+                    )
+                }))}
             </Col>
         </Row>
     );

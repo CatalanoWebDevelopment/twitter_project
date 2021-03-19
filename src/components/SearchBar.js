@@ -12,6 +12,7 @@ const SearchBar = () => {
         try {
             const request = await axios.get(`/api/searchTweets/?query=${search_parameters}`);
             const response = request.data;
+            console.log("RESPONSE", request)
             dispatch({ type: UPDATE_TWEETS_FROM_SEARCH, payload: response, query: search_parameters });
         } catch (error) {
             dispatch({ type: ERROR, payload: error.message });

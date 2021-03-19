@@ -12,7 +12,7 @@ const TweetContainer = () => {
         <Col xs={{ size: 12, order: 3 }} m={{ size: 8, order: 2 }} className="mt-3">
             { state.displayedTweets.length < 1 ? <Spinner /> : (
                 <Container className="u-box-shadow p-0 tweets--container">
-                    { state.displayedTweets.length < 1 ? <Spinner /> : state.displayedTweets.map((tweet, index) => (
+                    {state.displayedTweets.map((tweet, index) => (
                         <TweetCard key={index} tweet={tweet} authors={state.authors} />
                     ))}
 
