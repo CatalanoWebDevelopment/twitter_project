@@ -27,7 +27,7 @@ const TweetCard = ({ tweet, authors }) => {
 
                 {!hashtags ? "" : (hashtags.map((hashtag, index) => {
                     return (
-                        <Badge key={index} className="hashtag" pill>
+                        <Badge color="info" key={index} className="hashtag" pill>
                             #{hashtag.tag}
                         </Badge>
                     )
@@ -38,7 +38,7 @@ const TweetCard = ({ tweet, authors }) => {
 };
 
 TweetCard.propTypes = {
-    key: PropTypes.number,
+    authors: PropTypes.object,
     tweet: PropTypes.object,
 };
 

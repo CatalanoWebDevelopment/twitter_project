@@ -12,8 +12,8 @@ const TweetContainer = () => {
         <Col xs={{ size: 12, order: 3 }} m={{ size: 8, order: 2 }} className="mt-3">
             { state.displayedTweets.length < 1 ? <Spinner /> : (
                 <Container className="u-box-shadow p-0 tweets--container">
-                    {state.displayedTweets.map((tweet, index) => (
-                        <TweetCard key={index} tweet={tweet} authors={state.authors} />
+                    {state.displayedTweets.map((tweet) => (
+                        <TweetCard key={tweet.id} tweet={tweet} authors={state.authors} />
                     ))}
 
                     <Button className="load_more_tweets_button mt-3" onClick={() => dispatch(LOAD_MORE_TWEETS)}>Load more</Button>

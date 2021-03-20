@@ -14,6 +14,8 @@ const searchTweets = async (searchQuery) => {
             "user.fields": "description,entities,location,name,profile_image_url,username,verified"
         };
 
+        console.log("PARAMS", params)
+
         const res = await needle("get", endpointURL, params, {
             headers: {
                 "authorization": `Bearer ${token}`
@@ -46,7 +48,7 @@ const searchTweets = async (searchQuery) => {
 // @desc Search for Tweets within the past seven days. 
 // @access Private
 router.get("/", (req, res) => {
-    const searchQuery = req.query.searchQuery;
+    const searchQuery = req.query.query;
     searchTweets(searchQuery).then(data => {
         res.send({ response: data });
     });
