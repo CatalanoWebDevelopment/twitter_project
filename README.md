@@ -9,3 +9,6 @@ STEP THREE: AFTER INSTALLING PACKAGES / DEPENDENCIES, CREATE A `.env` FILE IN RO
 STEP FOUR: REFERENCE `.env.example` AND COPY OVER TWITTER API TOKEN AND CONFIGURE YOUR PORT
 
 STEP FIVE: WHILE IN THE ROOT OF THE PROJECT, RUN THE COMMAND `npm run dev` (when prompted to run client on another port, press the `Y` key to continue)
+
+![Alt text](./images/desktop_screenshot.png?raw=true "Desktop View")
+![Alt text](./images/mobile_screenshot.png?raw=true "Mobile View")
