@@ -16,9 +16,9 @@ const Reducer = (state, action) => {
                 ...state,
                 page: state.page += 1,
                 next: action.payload.response.meta,
-                tweets: action.payload.response.tweets,
+                tweets: state.tweets.concat(action.payload.response.tweets),
                 displayedTweets: (action.payload.response.tweets && action.payload.response.tweets.length > 0) ? action.payload.response.tweets.slice(0, (5 * state.page)) : "",
-                authors: action.payload.response.authors,
+                authors: { ...state.authors, ...action.payload.response.authors },
                 error: ""
             }
         case "UPDATE_SEARCH":

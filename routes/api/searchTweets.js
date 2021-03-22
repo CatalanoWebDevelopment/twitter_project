@@ -24,11 +24,12 @@ const searchTweets = async (searchQuery, next_token=undefined) => {
 
         if (res.body) {
             if (res.body.includes && res.body.includes.users) {
-                // Create an associative array of our users based upon their ID to match a tweet to.
+                // Create an object of our users based upon their ID to match a tweet to.
                 let authors = {};
                 for (let index = 0; index < res.body.includes.users.length; index++) {
                     let user = res.body.includes.users[index];
-                    if (!authors[user.id]) authors[user.id] = user;
+                    // if (!authors[user.id]) authors[user.id] = user;
+                    authors[user.id] = user;
                 };
 
                 return { tweets: res.body.data, meta: res.body.meta, authors };
