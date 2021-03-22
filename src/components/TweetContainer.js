@@ -9,7 +9,7 @@ const TweetContainer = () => {
     const [state, dispatch] = useContext(Context);
     
     return (
-        <Col xs={{ size: 12, order: 3 }} m={{ size: 8, order: 2 }} className="mt-3">
+        <Col xs={{ size: 12, order: 3 }} md={{ size: 8, order: 2 }} className="mt-3">
             { state.displayedTweets.length < 1 ? <Spinner /> : (
                 <Container className="u-box-shadow p-0 tweets--container">
                     {state.displayedTweets.map((tweet) => (

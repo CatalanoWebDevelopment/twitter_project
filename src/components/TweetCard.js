@@ -12,11 +12,11 @@ const TweetCard = ({ tweet, authors }) => {
 
     return (
         <Row className="p-3 m-0 tweet_row_container">
-            <Col xs="1">
+            <Col xs="2">
                 <img src={user.profile_image_url} alt="Logo" className="author_image" />
             </Col>
 
-            <Col xs="11">
+            <Col xs="10">
                 <div className="handle--container">
                     @{user.username}
                 </div>
@@ -27,7 +27,7 @@ const TweetCard = ({ tweet, authors }) => {
 
                 {!hashtags ? "" : (hashtags.map((hashtag, index) => {
                     return (
-                        <Badge color="info" key={index} className="hashtag" pill>
+                        <Badge key={index} className="hashtag" pill>
                             #{hashtag.tag}
                         </Badge>
                     )

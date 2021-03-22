@@ -48,7 +48,7 @@ const searchTweets = async (searchQuery) => {
 // @desc Search for Tweets within the past seven days. 
 // @access Private
 router.get("/", (req, res) => {
-    const searchQuery = req.query.query;
+    const searchQuery = req.query.searchQuery;
     searchTweets(searchQuery).then(data => {
         res.send({ response: data });
     });

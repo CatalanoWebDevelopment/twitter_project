@@ -2,13 +2,18 @@ $blue: #00acee;
 $light_blue: #f0f8ff;
 $light_grey: #F5F5F5; 
 $light_white: #FBFBFB;
+$white: #FFF;
+
+body {
+    background-color: $light_white !important;
+}
 
 .tweet_row_container:nth-child(even) {
     background-color: $light_grey;
 }
 
 .tweet_row_container:nth-child(odd) {
-    background-color: $light_white;
+    background-color: $white;
 }
 
 .tweets--container {
@@ -20,6 +25,22 @@ $light_white: #FBFBFB;
 .no_results_spinner {
     font-size: 3rem;
     margin: 2rem 0;
+}
+
+.hashtag {
+    background-color: $blue !important;
+    color: $white !important;
+    margin: 0px 0.25rem;
+    cursor: pointer;
+
+    &:hover {
+        color: $light_blue !important;
+        transform: scale(1.02);
+    }
+}
+
+.hashtag:first-of-type {
+    margin-left: 0px !important;
 }
 
 .load_more_tweets_button {
@@ -38,5 +59,10 @@ $light_white: #FBFBFB;
 
 // UTILITIES
 .u-box-shadow {
-    box-shadow: -2px 2px 7px -1px rgba(0,0,0,0.7);
+    box-shadow: 0px 1px 4px -1px rgba(0,0,0,0.7);
+    border-radius: 4px;
+}
+
+.u-background-color--light_white {
+    background-color: $light_white;
 }
