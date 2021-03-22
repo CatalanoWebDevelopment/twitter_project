@@ -2,17 +2,19 @@ const express = require("express");
 const router = express.Router();
 const needle = require("needle");
 const token = process.env.BEARER_TOKEN;
-const endpointURL = 'https://api.twitter.com/2/tweets/search/recent?result_type=popular';
+const endpointURL = 'https://api.twitter.com/2/tweets/search/recent?result_type=popular?';
 
-const searchTweets = async (searchQuery) => {
+const searchTweets = async (searchQuery, next_token=undefined) => {
     try {
         const params = {
             "query": `${searchQuery} lang:en`,
             "max_results": 10,
             "tweet.fields": "attachments,author_id,entities,source,text",
             "expansions": "author_id",
-            "user.fields": "description,entities,location,name,profile_image_url,username,verified"
+            "user.fields": "description,entities,location,name,profile_image_url,username,verified",
         };
+
+        if (next_token) params["next_token"] = next_token;
 
         const res = await needle("get", endpointURL, params, {
             headers: {
@@ -21,7 +23,6 @@ const searchTweets = async (searchQuery) => {
         });
 
         if (res.body) {
-            console.log(res)
             if (res.body.includes && res.body.includes.users) {
                 // Create an associative array of our users based upon their ID to match a tweet to.
                 let authors = {};
@@ -48,7 +49,10 @@ const searchTweets = async (searchQuery) => {
 // @access Private
 router.get("/", (req, res) => {
     const searchQuery = req.query.searchQuery;
-    searchTweets(searchQuery).then(data => {
+    let nextToken = req.query.nextToken;
+    if (nextToken === undefined) nextToken = "";
+
+    searchTweets(searchQuery, nextToken).then(data => {
         res.send({ response: data });
     });
 });

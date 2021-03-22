@@ -1,4 +1,4 @@
-import React, { useState, useContext, Fragment } from "react";
+import React, { useState, useContext, useEffect, Fragment } from "react";
 import axios from "axios";
 import { Context } from "../state/Store";
 import { UPDATE_TWEETS_FROM_SEARCH, ERROR } from "../state/Types";
@@ -9,6 +9,12 @@ const HashtagContainer = () => {
 
     // eslint-disable-next-line no-unused-vars
     const [query, updateQuery] = useState(state.query);
+    const [displayedTweets, updateDisplayedTweets] = useState(state.displayedTweets);
+
+    useEffect(() => {
+        let tweets = (state.tweets && state.tweets.length > 0) ? state.tweets.slice(0, (5 * state.page)) : "";
+        updateDisplayedTweets(tweets);
+    }, [state.page, state.tweets, updateDisplayedTweets])
 
     const searchByHashtag = async (hashtag) => {
         try {
@@ -24,8 +30,8 @@ const HashtagContainer = () => {
 
     const grabHashtagsFromTweets = () => {
         let hashtags = [];
-        if (state.displayedTweets) {
-            for (const tweet of state.displayedTweets) {
+        if (displayedTweets) {
+            for (const tweet of displayedTweets) {
                 if (tweet.entities && tweet.entities.hashtags) {
                     hashtags = hashtags.concat(tweet.entities.hashtags);
                 };

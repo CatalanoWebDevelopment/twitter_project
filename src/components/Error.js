@@ -2,7 +2,7 @@ import React, { Fragment, useContext, useEffect, useState } from "react";
 import { Alert } from "reactstrap";
 import { Context } from "../state/Store";
 
-const Error = msg => {
+const Error = () => {
     // eslint-disable-next-line no-unused-vars
     const [state, dispatch] = useContext(Context);
     const [error, updateError] = useState(state.error);
@@ -17,9 +17,9 @@ const Error = msg => {
 
     return (
         <Fragment>
-            {!state.error ? "" : (
+            {!error ? "" : (
                 <Alert color="warning">
-                    {msg}
+                    {error}
                 </Alert>
             )}
         </Fragment>

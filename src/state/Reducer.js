@@ -1,12 +1,5 @@
 const Reducer = (state, action) => {
-    console.log("PAYLOAD", action.payload.response)
     switch (action.type) {
-        case "LOAD_MORE_TWEETS":
-            return {
-                ...state,
-                displayedTweets: state.tweets.length > 0 ? state.tweets.slice(0, (5 * (state.page + 1))) : "",
-                page: state.page + 1
-            };
         case "UPDATE_TWEETS_FROM_SEARCH":
             return {
                 ...state,
@@ -15,12 +8,31 @@ const Reducer = (state, action) => {
                 next: action.payload.response.meta,
                 tweets: action.payload.response.tweets,
                 displayedTweets: (action.payload.response.tweets && action.payload.response.tweets.length > 0) ? action.payload.response.tweets.slice(0, (5 * state.page)) : "",
-                authors: action.payload.response.authors
+                authors: action.payload.response.authors,
+                error: ""
+            };
+        case "LOAD_NEXT_TWEETS":
+            return {
+                ...state,
+                page: state.page += 1,
+                next: action.payload.response.meta,
+                tweets: action.payload.response.tweets,
+                displayedTweets: (action.payload.response.tweets && action.payload.response.tweets.length > 0) ? action.payload.response.tweets.slice(0, (5 * state.page)) : "",
+                authors: action.payload.response.authors,
+                error: ""
+            }
+        case "UPDATE_SEARCH":
+            return {
+                ...state,
+                query: action.payload,
+                error: ""
             };
         case "ERROR":
             return {
                 ...state,
-                error: action.payload
+                error: action.payload,
+                tweets: [],
+                displayedTweets: []
             };
         default:
             return state;

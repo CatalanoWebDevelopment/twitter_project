@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col, Badge } from 'reactstrap';
 
@@ -10,30 +10,36 @@ const TweetCard = ({ tweet, authors }) => {
         hashtags = tweet.entities.hashtags;
     };
 
+    const profileImage = (user && user.profile_image_url) ? user.profile_image_url : "";
+
     return (
-        <Row className="p-3 m-0 tweet_row_container">
-            <Col xs="2">
-                <img src={user.profile_image_url} alt="Logo" className="author_image" />
-            </Col>
+        <Fragment>
+            {!user ? "" : (
+                <Row className="p-3 m-0 tweet_row_container">
+                    <Col xs="2">
+                        <img src={profileImage} alt="Logo" className="author_image" />
+                    </Col>
 
-            <Col xs="10">
-                <div className="handle--container">
-                    @{user.username}
-                </div>
+                    <Col xs="10">
+                        <div className="handle--container">
+                            @{user.username}
+                        </div>
 
-                <div className="tweet_text--container">
-                    {tweet.text}
-                </div>
+                        <div className="tweet_text--container">
+                            {tweet.text}
+                        </div>
 
-                {!hashtags ? "" : (hashtags.map((hashtag, index) => {
-                    return (
-                        <Badge key={index} className="hashtag" pill>
-                            #{hashtag.tag}
-                        </Badge>
-                    )
-                }))}
-            </Col>
-        </Row>
+                        {!hashtags ? "" : (hashtags.map((hashtag, index) => {
+                            return (
+                                <Badge key={index} className="hashtag" pill>
+                                    #{hashtag.tag}
+                                </Badge>
+                            )
+                        }))}
+                    </Col>
+                </Row>
+            )}
+        </Fragment>
     );
 };
 

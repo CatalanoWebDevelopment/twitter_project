@@ -14,7 +14,7 @@ const App = () => {
     <Store>
       <Container>
         <Row>
-          <Error />
+       
           <SearchBar />
           <TweetContainer />
           <HashtagContainer />
