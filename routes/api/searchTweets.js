@@ -14,8 +14,6 @@ const searchTweets = async (searchQuery) => {
             "user.fields": "description,entities,location,name,profile_image_url,username,verified"
         };
 
-        console.log("PARAMS", params)
-
         const res = await needle("get", endpointURL, params, {
             headers: {
                 "authorization": `Bearer ${token}`
@@ -23,6 +21,7 @@ const searchTweets = async (searchQuery) => {
         });
 
         if (res.body) {
+            console.log(res)
             if (res.body.includes && res.body.includes.users) {
                 // Create an associative array of our users based upon their ID to match a tweet to.
                 let authors = {};
