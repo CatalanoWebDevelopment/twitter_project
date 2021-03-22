@@ -7,7 +7,8 @@ const initialState = {
     tweets: [],
     displayedTweets: [],
     authors: [],
-    page: 0
+    page: 0,
+    error: ""
 };
 
 const Store = ({ children }) => {

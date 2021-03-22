@@ -7,15 +7,17 @@ import { Container, Row } from 'reactstrap';
 import SearchBar from "./components/SearchBar";
 import TweetContainer from "./components/TweetContainer";
 import HashtagContainer from "./components/HashtagContainer";
+import Error from "./components/Error";
 
 const App = () => {
   return (
     <Store>
       <Container>
         <Row>
-         <SearchBar />
-         <TweetContainer />
-         <HashtagContainer />
+          <Error />
+          <SearchBar />
+          <TweetContainer />
+          <HashtagContainer />
         </Row>
       </Container>
     </Store>

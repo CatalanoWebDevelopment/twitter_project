@@ -10,6 +10,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "dotenv": "^8.2.0",
+    "express-rate-limit": "^5.2.6",
     "needle": "^2.6.0",
     "node-sass": "^5.0.0",
     "react": "^17.0.1",
