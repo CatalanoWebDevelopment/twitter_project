@@ -7,14 +7,12 @@ import { Container, Row } from 'reactstrap';
 import SearchBar from "./components/SearchBar";
 import TweetContainer from "./components/TweetContainer";
 import HashtagContainer from "./components/HashtagContainer";
-import Error from "./components/Error";
 
 const App = () => {
   return (
     <Store>
-      <Container>
-        <Row>
-       
+      <Container style={{ height: "100%" }}>
+        <Row style={{ height: "100%" }}>
           <SearchBar />
           <TweetContainer />
           <HashtagContainer />

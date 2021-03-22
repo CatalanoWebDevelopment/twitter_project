@@ -4,8 +4,13 @@ $light_grey: #F5F5F5;
 $light_white: #FBFBFB;
 $white: #FFF;
 
-body {
+body, #root {
     background-color: $light_white !important;
+    height: 100vh;
+}
+
+.hashtags--container {
+    overflow-y: scroll;
 }
 
 .tweet_row_container:nth-child(even) {
@@ -18,8 +23,42 @@ body {
 
 .tweets--container {
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    box-shadow: 0px 1px 4px -1px rgba(0,0,0,0.7);
+    border-radius: 4px;
+    padding: 0px !important;
+}
+
+// Small and Down
+@media (max-width: 767px) {
+    .tweets--container {
+        overflow: hidden;
+        max-height: fit-content;
+    }
+
+    .hashtags--container {
+        height: fit-content;
+    }
+
+    body {
+        overflow: auto !important;
+    }
+}
+
+// Medium and Up
+@media (min-width: 768px) {
+    .tweets--container { 
+        overflow-y: scroll;
+        max-height: 50%;
+    }
+
+    .hashtags--container {
+        height: 75%;
+    }
+
+    body {
+        overflow: hidden !important;
+    }
 }
 
 .no_results_spinner {

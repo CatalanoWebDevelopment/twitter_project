@@ -26,9 +26,9 @@ const TweetContainer = () => {
     };
     
     return (
-        <Col xs={{ size: 12, order: 3 }} md={{ size: 8, order: 2 }} className="mt-3">
+        <Col xs={{ size: 12, order: 3 }} md={{ size: 8, order: 2 }} className="mt-3" style={{ height: "165%" }}>
             { displayedTweets.length < 1 ? <Spinner /> : (
-                <Container className="u-box-shadow p-0 tweets--container">
+                <Container className="tweets--container">
                     {displayedTweets.map((tweet) => (
                         <TweetCard key={tweet.id} tweet={tweet} authors={state.authors} />
                     ))}

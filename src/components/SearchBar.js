@@ -32,7 +32,7 @@ const SearchBar = () => {
     }, [state.query]);
 
     return (
-        <Col xs={{ size: 12, order: 1 }} md={{ size: 8, order: 1 }}>
+        <Col xs={{ size: 12, order: 1 }} md={{ size: 8, order: 1 }} style={{ height: "fit-content" }}>
             <h2 className="mt-3 mb-3">Tweet Feed</h2>
             <InputGroup>
                 <InputGroupAddon addonType="prepend">
