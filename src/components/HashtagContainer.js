@@ -45,7 +45,7 @@ const HashtagContainer = () => {
     return (
         <Fragment>
             { hashtags.length < 1 ? "" : (
-                <Col xs={{ size: 12, order: 2 }} md={{ size: 4, order: 2 }}>
+                <Col className="mt-3" xs={{ size: 12, order: 2 }} md={{ size: 4, order: 3 }}>
                     <Container className="u-box-shadow p-3">
                         <h2 className="mt-3 mb-3">Filter by hashtag</h2>
                         {(hashtags.map((hashtag, index) => {
